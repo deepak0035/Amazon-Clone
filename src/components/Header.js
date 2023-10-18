@@ -54,7 +54,9 @@ const Header = () => {
           <span className="bg-amazon bg-repeat-x navIcon mr-1"></span>
           All
         </p>
-        <p className="link">{"Today's Deals"}</p>
+        <p className="link">
+          Today<span>&#39;</span>s Deals
+        </p>
         <p className="link">Customer Service</p>
         <p className="link">Registry</p>
         <p className="link hidden md:inline-flex">Gift Cards</p>
