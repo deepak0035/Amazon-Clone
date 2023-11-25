@@ -1,7 +1,9 @@
 import Product from "./Product";
 import Image from "next/image";
 
-const ProductFeed = ({ products }) => {
+const ProductFeed = ({ products }) =>
+{
+
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-96 mx-auto">
       {products
@@ -21,7 +23,7 @@ const ProductFeed = ({ products }) => {
 
       <Image
         src="/images/banner.webp"
-        className="md:col-span-full"
+        className="md:col-span-full  p-5"
         width={3000}
         height={1200}
         alt="Carousel"

@@ -1,12 +1,24 @@
-const Header = () => {
+'use client'
+import { selectItems } from "@/slices/basketSlice";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+
+
+const Header = () =>
+{
+  const { data: session } = useSession();
+  const items = useSelector(selectItems)
   return (
     <header>
       {/* top-navBar */}
       <div className="flex items-center justify-between  bg-amazon_blue py-2 px-4 flex-grow h-16">
         <div className=" px-2 flex items-center justify-between flex-grow sm:flex-grow-0">
-          <div className="px-2 mt-2">
-            <span className="bg-amazon bg-repeat-x logo"></span>
-          </div>
+          <Link href="/">
+            <div className="px-2 mt-2">
+              <span className="bg-amazon bg-repeat-x logo"></span>
+            </div>
+          </Link>
           <div className="hidden md:flex text-white items-center text-xs whitespace-nowrap  px-2 leading-10">
             <span className="bg-amazon bg-repeat-x locationIcon"></span>
 
@@ -29,21 +41,25 @@ const Header = () => {
 
         {/* Right Side Options */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap ">
-          <div className="link">
-            <p className="text-xs">Hello, Deepak Kumar</p>
+          <div className="link" onClick={!session ? signIn : signOut}>
+            <p className="text-xs">
+              Hello, {session ? `${session.user.name}` : `Sign Im`}
+            </p>
             <p className="font-bold text-sm leading-3">Accounts & Lists</p>
           </div>
           <div className="link">
             <p className="text-xs">Returns</p>
             <p className="font-bold text-sm leading-3">& Orders</p>
           </div>
-          <div className="link relative flex items-center ">
-            <span className="cartText-position  text-colorOne leading-4 rounded-full text-center text-base font-bold">
-              0
-            </span>
-            <span className="bg-amazon bg-repeat-x cartIcon"></span>
-            <p className="hidden md:inline font-bold text-sm mt-2">Cart</p>
-          </div>
+          <Link href="/checkout">
+            <div className="link relative flex items-center ">
+              <span className="cartText-position  text-colorOne leading-4 rounded-full text-center text-base font-bold">
+                {items.length}
+              </span>
+              <span className="bg-amazon bg-repeat-x cartIcon"></span>
+              <p className="hidden md:inline font-bold text-sm mt-2">Cart</p>
+            </div>
+          </Link>
         </div>
       </div>
 

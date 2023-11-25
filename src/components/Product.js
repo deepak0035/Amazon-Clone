@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import CurrencyFormat from "react-currency-format";
-
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "@/slices/basketSlice";
 
 const Product = ({
   id,
@@ -13,7 +14,9 @@ const Product = ({
   image,
   category,
   rating,
-}) => {
+}) =>
+{
+  const dispatch = useDispatch()
   const ratingStar = Math.floor(parseFloat(rating.rate));
 
   const ratings = Array(ratingStar)
@@ -23,6 +26,20 @@ const Product = ({
         <StarIcon className={"h-5"} />
       </div>
     ));
+  
+  const handleAddBasket = () =>
+  {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      image,
+      category,
+      rating,
+    };
+    dispatch(addToBasket(product));
+  };
 
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10">
@@ -56,7 +73,7 @@ const Product = ({
           prefix={"$"}
         />
       </div>
-      <button className="mt-auto button">Add to Cart</button>
+      <button onClick={handleAddBasket} className="mt-auto button">Add to Cart</button>
     </div>
   );
 };
