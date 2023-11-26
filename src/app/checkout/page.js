@@ -8,7 +8,7 @@ import CheckProduct from "@/components/CheckProduct";
 import CurrencyFormat from "react-currency-format";
 import { useSession } from "next-auth/react";
 
-const page = () => {
+const checkout = () => {
   const items = useSelector(selectItems);
 const total = useSelector(selectTotal);
 
@@ -69,4 +69,4 @@ const total = useSelector(selectTotal);
   );
 };
 
-export default page;
+export default checkout;
