@@ -8,9 +8,9 @@ import CheckProduct from "@/components/CheckProduct";
 import CurrencyFormat from "react-currency-format";
 import { useSession } from "next-auth/react";
 
-const checkout = () => {
+const CheckOut = () => {
   const items = useSelector(selectItems);
-const total = useSelector(selectTotal);
+  const total = useSelector(selectTotal);
 
   const { data: session } = useSession();
   return (
@@ -42,7 +42,7 @@ const total = useSelector(selectTotal);
           {items.length > 0 && (
             <>
               <h2 className=" whitespace-nowrap">
-                Subtotal ({items.length} items) : 
+                Subtotal ({items.length} items) :
                 <span className="ml-1 font-bold">
                   <CurrencyFormat
                     value={total.toFixed(2)}
@@ -69,4 +69,4 @@ const total = useSelector(selectTotal);
   );
 };
 
-export default checkout;
+export default CheckOut;
