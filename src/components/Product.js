@@ -16,6 +16,7 @@ const Product = ({
   rating,
 }) =>
 {
+  
   const dispatch = useDispatch()
   const ratingStar = Math.floor(parseFloat(rating.rate));
 
