@@ -6,13 +6,12 @@ import { useSelector } from "react-redux";
 import { selectItems, selectTotal } from "@/slices/basketSlice";
 import CheckProduct from "@/components/CheckProduct";
 import CurrencyFormat from "react-currency-format";
-import { useSession } from "next-auth/react";
 
 const CheckOut = () => {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
 
-  const { data: session } = useSession();
+  const session  = true;
   return (
     <div className="bg-gray-100">
       <Header />

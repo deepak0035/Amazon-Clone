@@ -3,29 +3,33 @@ import Banner from "@/components/Banner";
 import ProductFeed from "@/components/ProductFeed";
 
 async function getData() {
-  const res = await fetch(process.env.PRODUCT_URL);
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_PRODUCT_URL);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
   }
-
-  return res.json();
 }
 
 const page = async () => {
   const products = await getData();
 
   return (
-      <div className="bg-colorBody">
-        <Header />
-        <main className="max-w-screen-2xl mx-auto">
-          {/* Banner */}
-          <Banner />
+    <div className="bg-colorBody">
+      <Header />
+      <main className="max-w-screen-2xl mx-auto">
+        {/* Banner */}
+        <Banner />
 
-          {/* ProductFeed */}
-          <ProductFeed products={products} />
-        </main>
-      </div>
+        {/* ProductFeed */}
+        <ProductFeed products={products} />
+      </main>
+    </div>
   );
 };
 
