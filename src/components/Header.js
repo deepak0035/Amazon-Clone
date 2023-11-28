@@ -2,9 +2,11 @@
 import { selectItems } from "@/slices/basketSlice";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 
 const Header = () => {
-  const session = true;
+  const { data: session } = useSession();
 
   const items = useSelector(selectItems);
   return (
@@ -39,9 +41,9 @@ const Header = () => {
 
         {/* Right Side Options */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap ">
-          <div className="link" onClick={!session ? "signIn" : "signOut"}>
+          <div className="link" onClick={!session ? signIn : signOut}>
             <p className="text-xs">
-              Hello, {session ? `DK` : `Sign Im`}
+              Hello, {session ? `${session.user.name}` : `Sign Im`}
             </p>
             <p className="font-bold text-sm leading-3">Accounts & Lists</p>
           </div>

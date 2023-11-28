@@ -4,7 +4,7 @@ import ProductFeed from "@/components/ProductFeed";
 
 async function getData() {
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_PRODUCT_URL);
+    const res = await fetch(process.env.PRODUCT_URL);
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
