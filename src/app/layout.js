@@ -5,8 +5,9 @@ import Provider from "@/components/reduxProvider";
 import AuthProvider from "@/components/AuthProvider";
 
 export const metadata = {
-  title: 'Amazon.com. Spend less. Smile more.',
-}
+  title: "Amazon.com. Spend less. Smile more.",
+  icons: [{ rel: "icon", url: favIcon.src }],
+};
 
 export default async function RootLayout({ children })
 {
