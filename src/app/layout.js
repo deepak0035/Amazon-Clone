@@ -4,7 +4,9 @@ import favIcon from "../../public/images/amazon.png";
 import Provider from "@/components/reduxProvider";
 import AuthProvider from "@/components/AuthProvider";
 
-
+export const metadata = {
+  title: 'Amazon.com. Spend less. Smile more.',
+}
 
 export default async function RootLayout({ children })
 {
